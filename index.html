@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.8.1/dist/sweetalert2.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .kotak {
+      margin-top: 250px;
+    }
+  </style>
+
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <title>Aku Sayang Kamu Dek</title>
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-lg text-center kotak">
+      <button type="button" class="btn btn-lg btn-primary tombol py-4 px-5 shadow">Pencet Disini Dulu Yuk!</button>
+      <h1 id="teks" class="d-none animate__animated animate__pulse"></h1>
+    </div>
+  </div>
+  <form action="" method="get">
+    <input type="hidden" name="by">
+  </form>
+
+  <!-- Footer -->
+  <footer class="page-footer font-small blue fixed-bottom">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 text-secondary"><small> Made with
+        <i class="fas fa-heart text-danger animate__animated animate__bounce animate__repeat-3 hati"></i> for
+        <a target="_blank" class="text-decoration-none text-danger" id="credit">Abang</a></small>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+  <script>
+    let nama, val;
+    const url_string = document.URL;
+    const url = new URL(url_string);
+    let doi;
+
+    if (url.searchParams.get('in') != null) {
+      doi = url.searchParams.get('in');
+    } else {
+      doi = "Adek Vidya";
+    }
+
+    let footer = document.getElementById("credit");
+    footer.href = "https://kreshna3131.github.io/";
+
+    function time() {
+      var d = new Date();
+      var n = d.getHours();
+      console.log(n);
+      if (n >= 5 && n <= 10) {
+        return "Pagi"
+      } else if (n >= 10 && n <= 15) {
+        return "Siang"
+      } else if (n >= 15 && n <= 18) {
+        return "Sore"
+      } else if (n >= 18 && n <= 24) {
+        return "Malam"
+      }
+    }
+
+    function makan() {
+      switch (time()) {
+        case "Pagi":
+          return "sarapan"
+          break;
+        case "Siang":
+          return "makan siang"
+          break;
+        case "Malam":
+          return "makan malam"
+          break;
+        case "Sore":
+          return "makan"
+          break;
+        default:
+          break;
+      }
+    }
+
+    function selesai() {
+      const teks = document.getElementById('teks');
+      const btn = document.querySelector('.tombol');
+      teks.innerHTML = `Semangat ${doi} <i
+  class="fas fa-heart text-danger animate__animated animate__heartBeat animate__repeat-3"></i>`;
+      btn.classList.add('d-none');
+      teks.classList.remove('d-none');
+    }
+
+    document.querySelector(".tombol").addEventListener('click', function () {
+      Swal.fire({
+        title: 'Hai Adek Vidya!',
+        html: `Selamat ${time()} cantiknya mas, Adek udah ${makan()} belum?`,
+        timer: 2500,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      }).then((result) => {
+        if (result.dismiss === Swal.DismissReason.timer) {
+          Swal.fire('Kalau belum jangan lupa makan lohh yaa dekkk').then((result) => {
+            Swal.fire({
+              title: ' ',
+              html: `Mas tau kok adek masih marah dan dendam banget sama mas`,
+              timer: 3000,
+              timerProgressBar: true,
+              showConfirmButton: false,
+            }).then((result) => {
+              if (result.dismiss === Swal.DismissReason.timer) {
+                Swal.fire({
+                  title: ' ',
+                  html: `Mas minta maaf ya dek atas kesalahan mas`,
+                  timer: 3000,
+                  timerProgressBar: true,
+                  showConfirmButton: false,
+                }).then((result) => {
+                  if (result.dismiss === Swal.DismissReason.timer) {
+                    Swal.fire('Semangat terus ya sayangnya Mas').then((result) => {
+                      Swal.fire(
+                        'Jangan keseringan nugas sampai larut malam ya!',
+                        '',
+                        'error'
+                      ).then((result) => {
+                        Swal.fire(
+                          'Jangan telat makannya loh yaaa!',
+                          '',
+                          'error'
+                        ).then((result) => {
+                          Swal.fire('Aku selalu sayang sama adek terusss').then((result) => {
+                            Swal.fire({
+                              title: 'Oh iya mas mau tanya ke adek',
+                              text: 'Ada sesuatu yang lagi adek pengen ga?',
+                              showDenyButton: true,
+                              confirmButtonText: `Ada Bang`,
+                              denyButtonText: `Ga ada ko Bang`,
+                            }).then((result) => {
+                              /* Read more about isConfirmed, isDenied below */
+                              if (result.isConfirmed) {
+                                Swal.fire({
+                                  title: 'Mau apa? Jangan lupa di SS kirim ke WA yaaa',
+                                  input: 'text',
+                                  inputPlaceholder: 'ex: Ciki, Es Krim, Dll',
+                                  showCancelButton: false,
+                                  inputValidator: (value) => {
+                                    if (!value) {
+                                      return 'Isi dulu dong dek'
+                                    }
+                                  }
+                                }).then((result) => {
+                                  Swal.fire('Okey Adek',
+                                    'Nanti mas kabulin kemauan adek yaa',
+                                    'success').then((result) => {
+                                    Swal.fire("See yaa sayanggg! Mas kangen")
+                                      .then((result) => {
+                                        selesai()
+                                      });
+                                  })
+                                })
+                              } else if (result.isDenied) {
+                                Swal.fire('Oh okedeh kalo ga ada').then((
+                                  result) => {
+                                    Swal.fire("See yaa sayanggg! Mas kangen").then((
+                                      result) => {
+                                      selesai()
+                                    });
+                                  })
+                              }
+                            })
+                          })
+                        })
+                      })
+                    })
+                  }
+                })
+              }
+            })
+          })
+        }
+      })
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
+  <script src="https://kit.fontawesome.com/61e5120832.js" crossorigin="anonymous"></script>
+
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.8.1/dist/sweetalert2.all.min.js"></script>
+</body>
+
+</html>
